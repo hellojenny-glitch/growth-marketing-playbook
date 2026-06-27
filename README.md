@@ -1,42 +1,40 @@
-# Growth Marketing Portfolio
+# Growth Marketing Playbook
 
-A working collection of the technical side of growth marketing: scripts,
-queries, and writeups built to solve real problems rather than to
-demonstrate syntax. See below for a TOC of what's in this portfolio.
+A working collection of frameworks, templates, swipe files, and tools I bring with me across teams and companies. Everything here is built to solve a real problem I've run into, not to demonstrate that I know how to do something. Use what's useful, adapt what's close, and ignore the rest.
 
-## Projects
+## How this is organized
 
-| Folder | What it is | Why it's here |
+| Folder | What's in it |
+|---|---|
+| `01-frameworks/` | Strategic thinking: positioning, channel strategy, growth loops. Use these when you're deciding what to do. |
+| `02-templates/` | Briefs, checklists, reporting structures. Use these when you're running something and don't want to start from a blank page. |
+| `03-swipe-files/` | Real examples: email campaigns, landing pages, ad copy. Use these for inspiration or a starting draft. |
+| `04-case-studies/` | Longer writeups of specific campaigns or decisions, including what worked, what didn't, and why. |
+| `05-tools-and-scripts/` | Actual working tools: scripts, queries, and writeups built to solve specific technical problems. |
+
+Each top-level folder has its own README with more detail on what's inside and how to use it.
+
+## What's in tools-and-scripts right now
+
+| Folder | What it is | When to use it |
 |---|---|---|
-| [`utm-generator/`](utm-generator) | Python script that generates standardized, validated UTM-tagged URLs and exports to CSV | Teams can turn a messy manual process into something with enforced rules, plus actual tests |
-| [`sql-cohort-funnel/`](sql-cohort-funnel) | Two Snowflake queries: cohort retention and funnel conversion | Shows SQL fluency on the two analyses every growth role eventually needs |
-| [`no-code-to-code/`](no-code-to-code) | Writeup of automating the UTM tracking spreadsheet that motivated the generator script | Shows the "why" behind the build, not just the "what" |
+| `utm-generator/` | Python script that generates standardized, validated UTM-tagged URLs and exports to CSV | When a team's UTM tagging is inconsistent or manual, and you want rules enforced by the system instead of a doc nobody reads |
+| `sql-cohort-funnel/` | Two Snowflake queries: cohort retention and funnel conversion | Starting point for the two analyses almost every growth role eventually needs, adapt the table names to your schema |
+| `no-code-to-code/` | Writeup of automating a UTM tracking spreadsheet that motivated the generator script | The "why" behind the build, useful if you're trying to make the case for automating a manual process on your own team |
 
-## How these connect
 
-These aren't three unrelated exercises. The UTM generator exists because of
-a real, specific spreadsheet problem, described in the no-code-to-code
-writeup. The SQL queries are a separate skill (data analysis vs.
-tooling), but the underlying instinct is the same across all three: don't
-trust a process to work just because a human is supposed to follow a rule,
-build the rule into the system instead.
+### Setup
 
-## What's next
+The UTM generator and its tests require Python 3.10+ and pytest:
 
-Planned additions: an API integration project pulling from Klaviyo/HubSpot
-into a Streamlit dashboard, and an A/B test significance-testing notebook.
-Both build on the SQL and Python foundation here.
-
-## Setup
-
-Each project folder has its own README with specific run instructions. The
-UTM generator and its tests require Python 3.10+ and `pytest`:
-
-```bash
-cd utm-generator
+```
+cd 05-tools-and-scripts/utm-generator
 pip install pytest
 python -m pytest test_utm_generator.py -v
 ```
 
-The SQL files are meant to be read and adapted, not run as-is. They assume a
-`users` and `events` table that won't exist in a fresh Snowflake account.
+The SQL files are meant to be read and adapted, not run as-is. They assume a `users` and `events` table that won't exist in a fresh Snowflake account.
+
+## Using this with a team
+
+If you're on a team I'm working with and pulling from this repo: everything here is meant to be copied, forked, or adapted into your own workflows. If something's unclear or missing context, the case studies and writeups usually have the reasoning behind a choice, not just the artifact itself.
